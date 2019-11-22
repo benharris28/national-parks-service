@@ -3,12 +3,14 @@
   }
   
   .state {
+    display: block;
     width: 50%;
     margin-top: 20px;
     margin-bottom: 10px;
   }
   
   .js-max-results {
+    display: block;
     margin-top: 10px;
   }
   

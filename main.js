@@ -8,13 +8,13 @@
 
 const apiKey = 'VNB7wgMgbqeHd90hZG2TabO7knvZ69doJG1AXmqr';
 const url = 'https://developer.nps.gov/api/v1/parks?'
-const limit = $('#js-max-results').val();
+
 
 // we are lookig for 
 function displayResults(responseJson) {
   console.log('results displayed');
   $('#results-list').empty();
-  for (i = 0; i < responseJson.data.length; i++) {
+  for (let i = 0; i < responseJson.data.length; i++) {
     $('#results-list').append(
     `<li>
         <h3>${responseJson.data[i].fullName}</h3>
@@ -27,7 +27,7 @@ function displayResults(responseJson) {
 
 // function to format states into stateCode parameter
 // must be a comma delimited list of 2 letter codes to insert into // url
-function formatStates(states) {
+function formatStates(states,limit) {
   console.log('formatStates ran');
   const lastIndex = states.length - 1;
   let stateCode;
@@ -36,7 +36,7 @@ function formatStates(states) {
   if (states.length > 1) {
     stateCode = states[0] + ",";
   
-      for (i = 1; i < states.length -1; i++) {
+      for (let i = 1; i < states.length -1; i++) {
       stateCode += states[i] + ",";
   
   }
@@ -76,10 +76,10 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const states = $('select[name = "state"]').val();
-    
+    const limit = $('#js-max-results').val();
     console.log(states);
     console.log(limit);
-    formatStates(states);
+    formatStates(states,limit);
   });
 }
 
