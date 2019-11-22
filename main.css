@@ -1,0 +1,14 @@
+#js-search-term {
+    display: block;
+  }
+  
+  .state {
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .js-max-results {
+    margin-top: 10px;
+  }
+  
