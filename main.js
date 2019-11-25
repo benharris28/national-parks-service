@@ -7,7 +7,8 @@
 
 
 const apiKey = 'VNB7wgMgbqeHd90hZG2TabO7knvZ69doJG1AXmqr';
-const url = 'https://developer.nps.gov/api/v1/parks?'
+const url = 'https://developer.nps.gov/api/v1/parks?';
+
 
 
 // we are lookig for 
@@ -48,6 +49,9 @@ function formatStates(states,limit) {
   let stateParam = `stateCode=${stateString}`;
   console.log(stateString);
   console.log(stateParam);
+  if (limit === '') {
+    limit = 10;
+  } 
   getStates(stateParam,limit);
 }
 
@@ -56,6 +60,7 @@ function formatStates(states,limit) {
 
 function getStates(stateParam, limit) {
 console.log('getStates ran');
+
 
 const urlCompiled = `https://developer.nps.gov/api/v1/parks?${stateParam}&limit=${limit}&api_key=${apiKey}`;
 
@@ -76,7 +81,7 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const states = $('select[name = "state"]').val();
-    const limit = $('#js-max-results').val();
+    let limit = $('#js-max-results').val();
     console.log(states);
     console.log(limit);
     formatStates(states,limit);
